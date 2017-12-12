@@ -14,8 +14,19 @@ manager.add_command('db', MigrateCommand)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128))    
+    name = db.Column(db.String)    
     email = db.Column(db.String)
+
+class RiskTypes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String)    
+    user = db.Column(db.String)
+
+class RiskFields(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)    
+    risk_type = db.Column(db.String)
+    data_type = db.Column(db.String)
 
 if __name__ == '__main__':
     manager.run()
